@@ -13,13 +13,25 @@
       vr-mode-ui="enabled: false"
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: true;"
     >
-      <a-entity gltf-model="./Assets/CModel.gltf" rotation="0 0 0" scale="1.0 1.0 1.0" gps-entity-place="latitude: 22.2853464; longitude: 114.1482174;"/>
-      <a-entity id="gps-display" position="0 2 -3" text="value: Loading GPS...; color: #FFF;"></a-entity>
-      <a-camera id="gps-camera"
-      gps-new-camera="gpsMinDistance: 5"
-      look-controls="enabled: false"
-      arjs-device-orientation-controls="smoothingFactor: 0.1"
-      debug-gps> </a-camera>
+      <a-entity 
+        gltf-model="./Assets/CModel.gltf" 
+        rotation="0 0 0" 
+        scale="1.0 1.0 1.0" 
+        gps-entity-place="latitude: 22.2853464; longitude: 114.1482174;">
+      </a-entity>
+      
+      <a-entity 
+        id="gps-display" 
+        position="0 2 -3" 
+        text="value: Loading GPS...; color: #FFF;">
+      </a-entity>
+      
+      <a-camera 
+        id="gps-camera"
+        gps-new-camera="gpsMinDistance: 5"
+        look-controls="enabled: false"
+        arjs-device-orientation-controls="smoothingFactor: 0.1">
+      </a-camera>
     </a-scene>
   </body>
 </html>
