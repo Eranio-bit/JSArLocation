@@ -14,12 +14,13 @@
       vr-mode-ui="enabled: false"
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"      
     >
-      <a-entity gltf-model="Assets/CModel.gltf" 
+      <a-entity gltf-model="./Assets/CModel.gltf" 
        rotation="0 180 0" 
        scale="1 1 1" 
-       gps-entity-place="latitude: 22.285098; longitude: 114.147833;" 
+       gps-new-entity-place="latitude: 22.285098; longitude: 114.147833;" 
        animation-mixer>
       </a-entity>
+      <a-box material="color: yellow" gps-new-entity-place="latitude: 22.285098"; longitude: 114.147833"/>
       <a-camera gps-camera rotation-reader> </a-camera>
     </a-scene>
   </body>
