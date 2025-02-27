@@ -6,7 +6,53 @@
     <title>GeoAR.js demo</title>
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@1.0.0/dist/aframe-look-at-component.min.js"></script>
+    <!-- Using the standard AR.js build. If you're doing geo AR, consider using aframe-ar.js -->
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    
+    <!-- Debugging Component -->
+    <script>
+      AFRAME.registerComponent('debug-gps', {
+        init: function () {
+          // Helper function: Haversine formula to compute distance between two coordinates in meters.
+          function getDistanceFromLatLonInMeters(lat1, lon1, lat2, lon2) {
+            const R = 6371000; // Earth's radius in meters
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a =
+              Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+              Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+              Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return R * c;
+          }
+          
+          // Target coordinate where the model is placed
+          const target = {
+            latitude: 22.2853464,
+            longitude: 114.1482174
+          };
+
+          // Listen for GPS updates from the camera
+          this.el.addEventListener('gps-camera-update-position', function (evt) {
+            const pos = evt.detail.position;
+            console.log('Current GPS position:', pos);
+            const distance = getDistanceFromLatLonInMeters(
+              pos.latitude, pos.longitude,
+              target.latitude, target.longitude
+            );
+            console.log('Distance to target:', distance.toFixed(2), "meters");
+
+            // You can set a threshold to check if you're close to the target.
+            const threshold = 20; // meters
+            if (distance < threshold) {
+              console.log("You are within " + threshold + " meters of the model's target location.");
+            } else {
+              console.log("You are not close enough to the target location.");
+            }
+          });
+        }
+      });
+    </script>
   </head>
 
   <body>
@@ -14,8 +60,25 @@
       vr-mode-ui="enabled: false"
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
     >
-      <a-entity gltf-model="./Assets/CModel.gltf" rotation="0 0 0" scale="1.0 1.0 1.0" gps-entity-place="latitude: 22.2853464; longitude: 114.1482174;"/>
-      <a-camera gps-camera rotation-reader> </a-camera>
+      <!-- GLTF Model placed at the target GPS coordinate -->
+      <a-entity gltf-model="Assets/CModel.gltf" 
+                rotation="0 0 0" 
+                scale="1.0 1.0 1.0" 
+                gps-entity-place="latitude: 22.2853464; longitude: 114.1482174;">
+      </a-entity>
+      
+      <!-- A simple text display to show GPS data (optional) -->
+      <a-entity id="gps-display" position="0 2 -3" 
+                text="value: Loading GPS...; color: #FFF;">
+      </a-entity>
+      
+      <!-- Camera with GPS and debugging components -->
+      <a-camera id="gps-camera"
+                gps-new-camera="gpsMinDistance: 5"
+                look-controls="enabled: false"
+                arjs-device-orientation-controls="smoothingFactor: 0.1"
+                debug-gps>
+      </a-camera>
     </a-scene>
   </body>
 </html>
