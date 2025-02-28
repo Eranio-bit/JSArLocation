@@ -103,13 +103,13 @@
 			0.21404114365577699,
 			1.0],
 			"metallicFactor":0.0,
-			"roughnessFactor":0.20000000298023225
+			"roughnessFactor":0.0
 		},
 		"emissiveFactor":[0.0,
 		0.0,
 		0.0],
 		"alphaMode":"OPAQUE",
 		"doubleSided":false,
-		"name":"Mat.1"
+		"name":"RS Material"
 	}]
 }
