@@ -4,6 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>GeoAR.js demo</title>
+    <!-- Load A-Frame -->
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <!-- Set THREE as a global variable -->
+    <script>
+      window.THREE = AFRAME.THREE;
+    </script>
+    <!-- Load AR.js (which now can access THREE globally) -->
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   </head>
   <body style="margin: 0; overflow: hidden;">
