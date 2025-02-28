@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>GeoAR.js demo</title>
-    <!-- Load A-Frame -->
-    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
-    <!-- Set THREE as a global variable -->
-    <script>
-      window.THREE = AFRAME.THREE;
-    </script>
-    <!-- Load AR.js (which now can access THREE globally) -->
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <!-- A-Frame itself -->
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+
+    <!-- Pure three.js code that the A-Frame components use for location-based AR -->
+    <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js'></script>
+
+    <!-- AR.js A-Frame components -->
+    <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
   </head>
   <body style="margin: 0; overflow: hidden;">
     <a-scene
