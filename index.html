@@ -13,7 +13,8 @@
     <a-scene
       vr-mode-ui="enabled: false"
       embedded
-      arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth:1280; displayHeight:960; debugUIEnabled: true;">
+      arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth:1280; displayHeight:960; debugUIEnabled: true;"
+      light="defaultLightsEnabled: false">
       
       <a-camera gps-camera rotation-reader></a-camera>
       
@@ -26,6 +27,8 @@
         scale="1 1 1"
         position="0 0 -5">
       </a-entity>
+      <a-entity light="color: #AFA; intensity: 1.5" position="-1 1 0"></a-entity>
+
       
     </a-scene>
   </body>
