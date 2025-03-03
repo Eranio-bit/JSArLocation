@@ -21,11 +21,23 @@
       <a-assets>
         <a-asset-item id="model" src="Assets/champagne.glb"></a-asset-item>
       </a-assets>
-      
+      <a-assets>
+        <!-- Cubemap asset -->
+        <a-cubemap id="reflection">
+          <img src="cubemap/px.jpg">
+          <img src="cubemap/nx.jpg">
+          <img src="cubemap/py.jpg">
+          <img src="cubemap/ny.jpg">
+          <img src="cubemap/pz.jpg">
+          <img src="cubemap/nz.jpg">
+        </a-cubemap>
+      </a-assets>
+
       <a-entity 
         gltf-model="#model" 
         scale="1 1 1"
-        position="0 1 -5">
+        position="0 1 -5"
+        material="envMap:#reflection; metalness: 0.5; roughness: 0.5">
       </a-entity>
       <a-entity light="type: ambient; color: #CCC; intensity: 2"> </a-entity>
 
