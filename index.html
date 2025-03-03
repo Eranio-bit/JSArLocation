@@ -13,8 +13,7 @@
     <a-scene
       vr-mode-ui="enabled: false"
       embedded
-      arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth:1280; displayHeight:960; debugUIEnabled: true;"
-      reflection="directionalLight:a-light#dirlight;">
+      arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth:1280; displayHeight:960; debugUIEnabled: true;">
       
       <a-camera gps-camera rotation-reader></a-camera>
 
@@ -31,14 +30,13 @@
       </a-assets>
       <a-entity 
         geometry="primitive: sphere; radius: .5"
-        material="envMap: #reflection; metalness: 0.5; roughness: 0.0"
+        material="color: #4CC3D9; envMap: #reflection; metalness: 0.5; roughness: 0.0"
         position="0 1.5 -3">
       </a-entity>
       
       <a-light type="directional" position="0 0 0" rotation="-45 0 0" target="#directionaltarget" intensity="1">
         <a-entity id="directionaltarget" position="0 0 -1"></a-entity>
       </a-light>
-      <a-light id="dirlight" intensity="1" light="castShadow:true;type:directional" position="1 1 1"></a-light>
       
     </a-scene>
   </body>
