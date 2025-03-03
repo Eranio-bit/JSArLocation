@@ -16,7 +16,18 @@
       arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth:1280; displayHeight:960; debugUIEnabled: true;">
       
       <a-camera gps-camera rotation-reader></a-camera>
-      
+
+      <a-assets>
+        <!-- Cubemap asset -->
+        <a-cubemap id="reflection">
+          <img src="cubemap/hknx.png">
+          <img src="cubemap/hkny.png">
+          <img src="cubemap/hknz.png">
+          <img src="cubemap/hknx.png">
+          <img src="cubemap/hkny.png">
+          <img src="cubemap/hknz.png">
+        </a-cubemap>
+      </a-assets>
       <a-entity 
         geometry="primitive: sphere; radius: 1"
         material="color: #4CC3D9"
