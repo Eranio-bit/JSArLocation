@@ -13,10 +13,10 @@
     <a-scene
       vr-mode-ui="enabled: false"
       embedded
-      arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth:1280; displayHeight:960; debugUIEnabled: true;"
-      >
+      arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth:1280; displayHeight:960; debugUIEnabled: true;">
       
       <a-camera gps-camera rotation-reader></a-camera>
+      
       <a-assets>
         <!-- Cubemap asset -->
         <a-cubemap id="reflection">
@@ -27,8 +27,7 @@
           <img src="cubemap/hkny.png">
           <img src="cubemap/hknz.png">
         </a-cubemap>
-      
-      <a-assets>
+        
         <a-asset-item id="model" src="Assets/champagne.glb"></a-asset-item>
       </a-assets>
 
@@ -36,16 +35,14 @@
         gltf-model="#model" 
         scale="1 1 1"
         position="0 1 -5"
-        material="metalness: 0.5; roughness: 0.0; envMap: #reflection"
-        >
+        material="metalness: 0.5; roughness: 0.0; envMap: #reflection">
       </a-entity>
       
-      </a-assets>
       <a-light type="directional" position="0 0 0" rotation="-45 0 0" target="#directionaltarget" intensity="3">
         <a-entity id="directionaltarget" position="0 0 -1"></a-entity>
       </a-light>
-      <a-light type="probe" intensity="100" envMap="#reflection"  ></a-light>
-
+      
+      <a-light type="probe" intensity="100" envMap="#reflection"></a-light>
       
     </a-scene>
   </body>
