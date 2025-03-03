@@ -20,7 +20,7 @@
       gps-camera-debug
       arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth:1280; displayHeight:960; debugUIEnabled: true;">
       
-      <a-camera id="camera" gps-camera rotation-reader></a-camera>
+      <a-camera id="camera" gps-camera minDistance:50 alert:true rotation-reader></a-camera>
       
       <a-entity 
         gltf-model="Assets/CModel.gltf" 
