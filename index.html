@@ -17,6 +17,16 @@
       >
       
       <a-camera gps-camera rotation-reader></a-camera>
+      <a-assets>
+        <!-- Cubemap asset -->
+        <a-cubemap id="reflection">
+          <img src="cubemap/hknx.png">
+          <img src="cubemap/hkny.png">
+          <img src="cubemap/hknz.png">
+          <img src="cubemap/hknx.png">
+          <img src="cubemap/hkny.png">
+          <img src="cubemap/hknz.png">
+        </a-cubemap>
       
       <a-assets>
         <a-asset-item id="model" src="Assets/champagne.glb"></a-asset-item>
@@ -29,16 +39,7 @@
         set-pbr-material="envMap:#reflection; metalness: 0.5; roughness: 0.0"
         >
       </a-entity>
-      <a-assets>
-        <!-- Cubemap asset -->
-        <a-cubemap id="reflection">
-          <img src="cubemap/hknx.png">
-          <img src="cubemap/hkny.png">
-          <img src="cubemap/hknz.png">
-          <img src="cubemap/hknx.png">
-          <img src="cubemap/hkny.png">
-          <img src="cubemap/hknz.png">
-        </a-cubemap>
+      
       </a-assets>
       <a-light type="directional" position="0 0 0" rotation="-45 0 0" target="#directionaltarget" intensity="10">
         <a-entity id="directionaltarget" position="0 0 -1"></a-entity>
