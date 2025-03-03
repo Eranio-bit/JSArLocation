@@ -20,14 +20,14 @@
       gps-camera-debug
       arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth:1280; displayHeight:960; debugUIEnabled: true;">
       
-      <a-camera id="camera" gps-camera minDistance:50 alert:true rotation-reader></a-camera>
+      <a-camera id="camera" gps-camera minDistance:10 alert:true rotation-reader></a-camera>
       
       <a-entity 
         gltf-model="Assets/CModel.gltf" 
         rotation="0 180 0" 
         scale="0.15 0.15 0.15" 
         gps-new-entity-place="latitude: 114.148181; longitude: 22.285350"
-        look-at="#camera">
+        >
       </a-entity>
       
     </a-scene>
