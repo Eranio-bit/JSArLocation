@@ -14,7 +14,8 @@
       renderer="logarithmicDepthBuffer: true;"
       vr-mode-ui="enabled: false"
       embedded
-      arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth:1280; displayHeight:960; debugUIEnabled: true;">
+      arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth:1280; displayHeight:960; debugUIEnabled: true;"
+      reflection="directionalLight:a-light#dirlight; probe:a-light#probe;">
       
       <a-camera gps-camera rotation-reader></a-camera>
 
@@ -34,11 +35,12 @@
         material="color: #4CC3D9; roughness: 0.0; metalness: 0.9"
         position="0 1.5 -3">
       </a-entity>
+        
       
-      <a-light type="directional" position="0 0 0" rotation="0 0 0" target="#directionaltarget" intensity="1">
+      <a-light id="dirlight" type="directional" position="0 0 0" rotation="0 0 0" target="#directionaltarget" intensity="1">
         <a-entity id="directionaltarget" position="0 0 -1"></a-entity>
       </a-light>
-      <a-light type="probe" envMap="#reflection" intensity="1"></a-light>
+      <a-light id="probe" type="probe" envMap="#reflection" intensity="10"></a-light>
       
     </a-scene>
   </body>
