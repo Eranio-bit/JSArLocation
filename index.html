@@ -15,24 +15,25 @@
       vr-mode-ui="enabled: false"
       embedded
       arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth:1280; displayHeight:960; debugUIEnabled: true;"
-      reflection="directionalLight:a-light#dirlight; probe:a-light#probe;">
+      reflection="directionalLight:a-light#dirlight; probe:a-light#probe;"
+      environment="#reflection">
       
       <a-camera gps-camera rotation-reader></a-camera>
 
       <a-assets>
         <!-- Cubemap asset -->
         <a-cubemap id="reflection">
-          <img src="cubemap/hknx.png">
-          <img src="cubemap/hkny.png">
-          <img src="cubemap/hknz.png">
-          <img src="cubemap/hknx.png">
-          <img src="cubemap/hkny.png">
-          <img src="cubemap/hknz.png">
+          <img src="./cubemap/hknx.png">
+          <img src="./cubemap/hkny.png">
+          <img src="./cubemap/hknz.png">
+          <img src="./cubemap/hknx.png">
+          <img src="./cubemap/hkny.png">
+          <img src="./cubemap/hknz.png">
         </a-cubemap>
       </a-assets>
       <a-entity 
         geometry="primitive: sphere; radius: .5"
-        material="envMap: #reflection; color: #4CC3D9; roughness: 0.0; metalness: 0.9"
+        material="env-map: #reflection; color: #4CC3D9; roughness: 0.0; metalness: 1.0"
         position="0 1.5 -3">
       </a-entity>
         
