@@ -8,6 +8,37 @@
     <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js'></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script>
+      AFRAME.registerComponent('env-map-loader', {
+        init: function () {
+          const el = this.el;
+          const loader = new THREE.CubeTextureLoader();
+          // Set the path where your cubemap images are located
+        loader.setPath('cubemap/');
+        const textureCube = loader.load([
+          'cubemap/hknx.png', // positive X
+          'cubemap/hkny.png', // positive Y
+          'cubemap/hknz.png', // positive Z
+          'cubemap/hknx.png', // negative X (reusing if necessary)
+          'cubemap/hkny.png', // negative Y
+          'cubemap/hknz.png'  // negative Z
+        ]);
+        
+        // Wait until the mesh is loaded
+        el.addEventListener('object3dset', function () {
+          const mesh = el.getObject3D('mesh');
+          if (!mesh) { return; }
+          mesh.traverse(function (child) {
+            if (child.isMesh) {
+              // Apply the environment map and force material update
+              child.material.envMap = textureCube;
+              child.material.needsUpdate = true;
+            }
+          });
+        });
+      }
+    });
+    </script>
   </head>
   <body style="margin: 0; overflow: hidden;">
     <a-scene
@@ -17,21 +48,11 @@
       
       <a-camera gps-camera rotation-reader></a-camera>
 
-      <a-assets>
-        <!-- Cubemap asset -->
-        <a-cubemap id="reflection">
-          <img src="cubemap/hknx.png">
-          <img src="cubemap/hkny.png">
-          <img src="cubemap/hknz.png">
-          <img src="cubemap/hknx.png">
-          <img src="cubemap/hkny.png">
-          <img src="cubemap/hknz.png">
-        </a-cubemap>
-      </a-assets>
       <a-entity 
         geometry="primitive: sphere; radius: .5"
         material="color: #4CC3D9; roughness: 0.0; metalness: 0.9"
-        position="0 1.5 -3">
+        position="0 1.5 -3"
+        env-map-loader>
       </a-entity>
       
       <a-light type="directional" position="0 0 0" rotation="-45 0 0" target="#directionaltarget" intensity="1">
